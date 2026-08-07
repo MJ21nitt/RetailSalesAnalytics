@@ -1,0 +1,227 @@
+SQL Sales & Supply Chain Analytics Project
+
+Business Objective
+
+The objective of this project was to analyze a multi-year sales dataset to uncover business insights related to revenue generation, customer performance, product profitability, market performance, and sales trends. The analysis focused on transforming raw transactional data into actionable insights that support strategic decision-making in sales, operations, and supply chain management.
+
+Phase 1 — Data Understanding & Validation
+
+Business Objective
+
+Before performing any business analysis, validate the integrity and completeness of the transactional data to ensure reliable reporting.
+
+SQL Techniques Used
+COUNT()
+DISTINCT
+MIN()
+MAX()
+Aggregate Functions
+NULL Validation
+Joins
+Data Quality Checks
+Key Insights
+Dataset contains 148,395 transactions spanning 2017–2020.
+Revenue data is complete with no missing sales values.
+Approximately 59 products lack product category information.
+Nearly 46% of transactions generated negative profit.
+Profit calculations matched Sales − Cost, confirming data consistency.
+Business Recommendations
+Improve product master data by assigning categories to uncategorized products.
+Establish automated validation checks before dashboard generation.
+Investigate reasons for the high proportion of loss-making transactions.
+Phase 2 — Revenue Analysis
+Business Objective
+
+Evaluate overall business performance and identify the major contributors to company revenue.
+
+SQL Techniques Used
+SUM()
+GROUP BY
+ORDER BY
+Aggregate Functions
+Key Insights
+Total Revenue: ₹984.81 Million
+Revenue steadily increased until 2018 before declining through 2019 and 2020.
+Business generated substantial sales volume despite relatively low profit margins.
+Business Recommendations
+Continue monitoring revenue trends while simultaneously tracking profitability.
+Revenue should never be evaluated independently of operational efficiency.
+Phase 3 — Customer Analytics
+Business Objective
+
+Identify key customers contributing to revenue and understand customer concentration.
+
+SQL Techniques Used
+GROUP BY
+DENSE_RANK()
+Window Functions
+Cumulative SUM()
+CASE Statements
+Key Insights
+Business served 38 unique customers.
+One customer alone contributed 41.97% of total revenue.
+Approximately 12 customers generated nearly 80% of total revenue, demonstrating the Pareto Principle.
+Customers were segmented into Gold, Silver, and Bronze categories based on revenue contribution.
+Business Recommendations
+Maintain strong relationships with critical customers through dedicated account management.
+Reduce dependency on a small customer base by expanding medium-sized accounts.
+Develop targeted retention strategies for high-value customers.
+
+Phase 4 — Market Analytics
+Business Objective
+
+Evaluate market-wise business performance to identify operational strengths and weaknesses.
+
+SQL Techniques Used
+INNER JOIN
+GROUP BY
+SUM()
+Profit Margin Calculation
+Ranking
+
+Key Insights
+    
+    Delhi NCR generated 52.75% of total company revenue.
+    Despite its large revenue, Delhi achieved only 2.3% profit margin.
+    Surat and Patna delivered higher margins despite much lower revenue.
+    Bengaluru and Kanpur operated at negative profit margins.
+    Business Recommendations
+    Review pricing and logistics strategies in loss-making markets.
+    Expand operations in consistently profitable regions.
+    Reduce dependence on a single dominant market.
+
+Phase 5 — Product Analytics
+Business Objective
+
+Identify products driving revenue, demand, and profitability to improve inventory planning and product strategy.
+
+SQL Techniques Used
+LEFT JOIN
+GROUP BY
+Revenue Ranking
+Profit Margin Calculation
+Average Selling Price
+Window Functions
+Key Insights
+Premium-priced products were not necessarily more profitable.
+Several products generated high revenue while maintaining extremely low margins.
+High-demand products followed a low-price, high-volume sales model.
+Multiple products operated at negative margins.
+Most top-selling products lacked product category information, indicating master data issues.
+Business Recommendations
+Investigate pricing strategies for premium products with poor margins.
+Maintain adequate inventory for high-volume products.
+Review supplier contracts for products with consistently low profitability.
+Improve product master data quality.
+Phase 6 — Time Series Analytics
+Business Objective
+
+Analyze revenue trends over time to identify seasonality and business growth patterns.
+
+SQL Techniques Used
+GROUP BY
+ORDER BY
+DATE Functions
+Monthly Aggregation
+Key Insights
+Revenue peaked during 2018.
+Business experienced declining monthly revenue after 2018.
+Sales volumes reduced significantly during 2020.
+Monthly demand patterns indicated possible seasonality.
+Business Recommendations
+Investigate external factors affecting post-2018 revenue decline.
+Improve demand forecasting during seasonal fluctuations.
+Align procurement with historical demand cycles.
+Phase 7 — Month-over-Month Growth
+Business Objective
+
+Measure short-term business performance by comparing each month's revenue against the previous month.
+
+SQL Techniques Used
+Common Table Expressions (CTEs)
+LEFT JOIN
+LAG()
+Window Functions
+Key Insights
+Revenue experienced substantial monthly fluctuations.
+Largest monthly decline occurred during June 2020.
+Growth was inconsistent across the study period.
+Business Recommendations
+Monitor monthly KPIs to identify performance issues early.
+Investigate operational or market factors causing sharp revenue declines.
+Phase 8 — Year-over-Year Growth
+Business Objective
+
+Compare each month with the corresponding month in the previous year to eliminate seasonality effects.
+
+SQL Techniques Used
+LAG() with offset
+Window Functions
+Time Series Comparison
+Key Insights
+Revenue consistently declined during 2019 and 2020 compared to previous years.
+Year-over-year analysis provided a clearer view of long-term business performance than month-over-month comparisons.
+Business Recommendations
+Use Year-over-Year metrics for strategic planning.
+Investigate structural causes behind sustained revenue decline.
+Phase 9 — Moving Average Analysis
+Business Objective
+
+Smooth short-term fluctuations and identify long-term sales trends.
+
+SQL Techniques Used
+AVG() OVER()
+ROWS BETWEEN
+Window Functions
+Key Insights
+Moving averages reduced monthly volatility.
+Long-term downward trends became more apparent.
+Business momentum weakened after 2018.
+Business Recommendations
+Use moving averages for forecasting and executive reporting.
+Combine trend analysis with demand planning.
+Phase 10 — Profitability Analytics
+Business Objective
+
+Evaluate operational efficiency by measuring profit generation rather than revenue alone.
+
+SQL Techniques Used
+SUM()
+Calculated KPIs
+Profit Margin Calculation
+Key Insights
+Overall company profit margin was approximately 2.5%.
+Nearly half of all transactions generated negative profit.
+High revenue did not necessarily translate into healthy profitability.
+Business Recommendations
+Monitor profitability alongside revenue in executive dashboards.
+Investigate cost optimization opportunities across products and markets.
+Review discount strategies and procurement costs.
+
+
+Major SQL Concepts Demonstrated
+
+SELECT
+WHERE
+GROUP BY
+HAVING
+ORDER BY
+INNER JOIN
+LEFT JOIN
+Aggregate Functions
+CASE
+COALESCE
+CTEs
+Window Functions
+LAG()
+DENSE_RANK()
+Running Totals
+Moving Average
+Revenue Contribution
+Profit Margin Calculation
+Time Series Analysis
+
+
+Final Business Impact
+
+This project transformed raw transactional sales data into a comprehensive business intelligence solution by analyzing customer behavior, market performance, product profitability, revenue trends, and operational efficiency. The analysis identified revenue concentration risks, profitability challenges, data quality issues, seasonal sales patterns, and high-value business opportunities, providing actionable recommendations to support strategic decision-making in sales, inventory planning, and supply chain operations.
