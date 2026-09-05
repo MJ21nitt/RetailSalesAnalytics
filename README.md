@@ -140,6 +140,6 @@ The repository contains SQL analysis scripts only; no source dataset is included
 
 ## 👤 Author
 
-**Your Name**
+**Jaisarves M**
 
 Data Analytics | SQL | Business Intelligence
