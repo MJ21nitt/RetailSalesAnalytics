@@ -35,9 +35,8 @@ sales-data-analysis/
 ├── data/
 │   └── README.md
 ├── dashboard/
-│   └── README.md
-└── screenshots/
     └── README.md
+
 ```
 
 ## 🗃️ Data Model
