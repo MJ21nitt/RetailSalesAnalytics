@@ -1,10 +1,12 @@
-# Sales Data Analysis Using SQL
+# Sales Data Analysis Using SQL and PowerBI
 
 ## 📊 Project Overview
 
-This project analyzes sales transaction data using SQL to explore data quality, customer behavior, product performance, market performance, time-based trends, advanced analytical calculations, and profitability.
+This project presents an end-to-end sales and profitability analytics solution using **SQL** and **Power BI** to evaluate **148,395 transaction records** totaling **₹984.81 Million** in gross revenue across 2017 to 2020. 
 
-The SQL scripts are organized by analytical area so the work can be reviewed and reproduced easily.
+The analytical workflow bridges raw data validation and advanced SQL querying with an interactive 5-page Power BI dashboard. By moving beyond top-line revenue metrics, the analysis evaluates customer concentration risks, regional market profitability, product line margins, and time-series growth trajectories.
+
+The SQL queries and Power BI artifacts are organized systematically so the work can be easily audited, reproduced, and reviewed.
 
 ## 🎯 Objectives
 
@@ -17,13 +19,15 @@ The SQL scripts are organized by analytical area so the work can be reviewed and
 - Calculate running totals and rolling averages
 - Analyze cumulative customer revenue contribution
 - Segment customers using revenue contribution
-- Evaluate overall, market-level, and product-level profitability
+- Build a single-fact Star Schema data model in Power BI with custom DAX measures.
+- Evaluate overall portfolio profitability, identifying loss-making products and markets.
 
 ## 🗂️ Repository Structure
 
 ```text
 sales-data-analysis/
 ├── README.md
+├── PROJECT REPORT.md
 ├── sql/
 │   ├── 01_data_quality.sql
 │   ├── 02_customer_analysis.sql
@@ -35,7 +39,7 @@ sales-data-analysis/
 ├── data/
 │   └── README.md
 ├── dashboard/
-    └── README.md
+    └── power_bi_dashboard_documentation.md
 
 ```
 
@@ -52,6 +56,23 @@ The queries use the following tables and fields from the source SQL notes:
 | `date` | `date`, `year`, `month_name` |
 
 > **Note:** The source data uses the column name `custmer_name`. The SQL files preserve that name so they remain aligned with the source schema.
+
+### Power BI Star Schema
+The Power BI analytical layer transforms these tables into a single-fact **Star Schema** ($*:1$ cardinality):
+
+```text
+               customers
+                   | (1)
+                   |
+                   | (*)
+markets (1)---(*) transactions (*)---(1) products
+                   |
+                   | (*)
+                   | (1)
+                 date
+```
+
+---
 
 ## 🔍 Analysis Areas
 
@@ -97,46 +118,49 @@ Calculates revenue, cost, profit, profit margin percentage, market profitability
 
 See: `sql/07_profitability_analysis.sql`
 
-## 🧠 SQL Skills Demonstrated
+### 8. Interactive Power BI Dashboard & DAX Modeling
+Translates database findings into an executive BI dashboard featuring explicit DAX financial measures, custom calendar display keys (`DATE_YY_MMMM`), dynamic slicers, and 5 detailed visual report pages.
+* **Dashboard Documentation:** `dashboard/power_bi_dashboard_documentation.md`
 
-- `SELECT`, `WHERE`, `GROUP BY`, `ORDER BY`, `LIMIT`
-- `DISTINCT`
-- `JOIN` and `LEFT JOIN`
-- `COALESCE()` and `CASE`
-- Aggregate functions such as `SUM()`, `COUNT()`, `MIN()`, `MAX()`, and `AVG()`
-- `ROUND()`
-- `RANK()` and `DENSE_RANK()`
-- `LAG()`
-- Common Table Expressions (CTEs)
-- Window functions
-- Running totals
-- Rolling averages
-- MoM and YoY calculations
-- YTD calculations
-- Cumulative revenue and contribution analysis
+
+## 🧠 Skills Demonstrated
+
+### SQL & Relational Analytics
+- Data validation (`COUNT`, `DISTINCT`, `MIN`, `MAX`, `NULL` checks)
+- Relational table joins (`INNER JOIN`, `LEFT JOIN`)
+- Advanced aggregation & conditional logic (`GROUP BY`, `HAVING`, `COALESCE`, `CASE WHEN`)
+- Common Table Expressions (CTEs) & subqueries
+- Analytical window functions (`LAG`, `DENSE_RANK`, `SUM() OVER`, `AVG() OVER`)
+- Financial time-series analysis (MoM, YoY, trailing moving averages)
+
+### Power BI & Business Intelligence
+- Star Schema data modeling ($*:1$ relationship propagation)
+- Power Query ETL data transformation and truncation debugging
+- DAX measure engineering (`DIVIDE`, `SUM`, `COUNTROWS`, explicit measures)
+- Custom date dimension modeling (`DATE_YY_MMMM` custom sorting)
+- Dashboard user experience (UX), page layout design, and interactive slicing
+- Business executive reporting and strategic recommendation synthesis
+
+---
+The repository contains SQL analysis scripts only; no source dataset is included in this package.
+
+## ⚠️ Project Recovery & Documentation Statement
+
+> **Note on File Availability:** Prior to repository deployment, the compiled binary Power BI dashboard file (`.pbix`) was lost due to a local storage failure. However, the complete analytical architecture—including SQL queries, Star Schema specifications, Power Query transformations, DAX measures, page-by-page visual layouts, and executive insights—has been fully reconstructed and documented in `dashboard/README.md`.
+
+---
 
 ## ▶️ How to Use
 
-1. Create or connect to a SQL database containing the required tables.
-2. Load the source data into the tables listed above.
-3. Verify that table and column names match the queries.
-4. Start with `01_data_quality.sql`.
-5. Continue through the remaining scripts according to the analysis area.
+1. **SQL Analytics:**
+   - Import the source database tables listed in the Data Model section.
+   - Run the scripts sequentially from `sql/01_data_quality.sql` through `sql/07_profitability_analysis.sql`.
+2. **Data & Schema Review:**
+   - Refer to `data/README.md` for complete data dictionary details and ingestion parameters.
+3. **Power BI Architecture Review:**
+   - Navigate to `dashboard/power_bi_dashboard_documentation.md` to examine the Star Schema model, DAX measure repository, visual layout specifications, and detailed business recommendations.
 
-The repository contains SQL analysis scripts only; no source dataset is included in this package.
-
-## 📌 Query Organization
-
-```text
-01 → Data Quality
-02 → Customer Analysis
-03 → Product Analysis
-04 → Market Analysis
-05 → Time Analysis
-06 → Window Functions & CTEs
-07 → Profitability Analysis
-```
-
+---
 ## 👤 Author
 
 **Jaisarves M**
