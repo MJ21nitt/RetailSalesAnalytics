@@ -211,19 +211,3 @@ The visual presentation comprised **5 distinct pages**, designed according to us
 3. **Database Remediation:** Enforce mandatory data validation constraints on `Products[product_type]` in source databases to eliminate untagged `"Unknown"` classifications.
 4. **Account Diversification:** Focus acquisition pipelines on medium-sized clients to reduce concentration risk on top account holders.
 
----
-
-## 📑 Verification Checklist: Confirmed vs. Reconstructed
-
-### Confirmed Technical Parameters
-* Exact Transaction Count: **148,395**.
-* Dimensional Counts: **38 Customers**, **279 Products**, **17 Markets**, **1,126 Dates**.
-* Time Horizon: **2017 through 2020**.
-* Star Schema Architecture with `1:*` relationships to `Transactions`.
-* DAX formulas for `Total Revenue`, `Total Cost`, `Total Profit`, `Profit Margin %`, `Total Quantity`, `Total Transactions`.
-* Data bug fix restoring full 148,395 rows from 5,000 truncated rows.
-* Overall Profit Margin benchmark ($\sim 2.50\%$).
-
-### Items Needing PBIX Reconstruction
-* Binary compiled `.pbix` file export.
-* Exact color palettes, pixel coordinates, and custom visual padding settings.
