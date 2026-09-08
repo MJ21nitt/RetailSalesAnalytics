@@ -12,4 +12,3 @@ Suggested dashboard sections:
 - Profitability
 - Customer contribution / Pareto analysis
 
-Add the dashboard file or exported screenshots here when available.
